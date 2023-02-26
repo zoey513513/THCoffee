@@ -4,6 +4,8 @@
 //
 //  Created by yan on 2/3/23.
 //
+import Firebase
+import GoogleSignIn
 
 import UIKit
 
@@ -11,12 +13,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    
+
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+       
+        GIDSignIn.sharedInstance().clientID = "1067071655682-96864klsludj58k4dmn48ofoi0ntv96u.apps.googleusercontent.com"
         return true
     }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url)
+    }
 
+ 
+    
+   
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
